@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brigitte Luigia Iannotta — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Caveat:wght@500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FAF8F4;
+    --bg2: #F2EFE7;
+    --bg3: #EAE6DB;
+    --ink: #1C1A17;
+    --ink2: #6B6560;
+    --ink3: #A09990;
+    --accent: #2D5A3D;
+    --accent-light: #E6F0EA;
+    --rust: #7A3020;
+    --rust-mid: #9C4A30;
+    --rust-light: #F5EAE5;
+    --gold: #9A6B20;
+    --gold-light: #F7F0E0;
+    --border: rgba(28,26,23,0.10);
+    --border2: rgba(28,26,23,0.18);
+    --r: 3px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,248,244,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 58px;
+  }
+  .nav-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink2);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--rust-mid); }
+
+  /* HERO */
+  .hero-wrap {
+    margin-top: 58px;
+    min-height: calc(100vh - 58px);
+    display: flex; align-items: center;
+    padding: 5rem 3rem;
+    max-width: 1100px;
+    margin-left: auto; margin-right: auto;
+    gap: 4rem;
+  }
+  .hero-left { flex: 1; }
+  .hero-right { width: 310px; flex-shrink: 0; }
+
+  .eyebrow {
+    display: flex; align-items: center; gap: 0.7rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rust-mid);
+    margin-bottom: 1.4rem;
+  }
+  .eyebrow-line { width: 32px; height: 1px; background: var(--rust-mid); }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 1.05;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.3rem;
+  }
+  h1 em { font-style: italic; color: var(--rust); }
+
+  .hero-roles {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin: 1.5rem 0 1.8rem;
+  }
+  .role-pill {
+    font-size: 0.73rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid var(--border2);
+    color: var(--ink2);
+    padding: 0.28rem 0.75rem;
+    border-radius: 100px;
+  }
+  .hero-summary {
+    font-size: 1rem;
+    color: var(--ink2);
+    line-height: 1.8;
+    max-width: 500px;
+    margin-bottom: 2.2rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    background: var(--rust);
+    color: #fff;
+    padding: 0.65rem 1.4rem;
+    border-radius: var(--r);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--rust-mid); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--border2);
+    padding: 0.65rem 1.4rem;
+    border-radius: var(--r);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--rust); color: var(--rust); }
+
+  /* hero card */
+  .hero-card {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .hero-card-header {
+    background: var(--rust);
+    padding: 1.4rem 1.6rem;
+  }
+  .initials {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+    color: #fff;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.04em;
+  }
+  .hero-card-header h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 0.15rem;
+  }
+  .hero-card-header p { font-size: 0.78rem; color: rgba(255,255,255,0.65); }
+  .hero-card-body { padding: 1.3rem 1.6rem; }
+  .contact-row {
+    display: flex; align-items: flex-start; gap: 0.55rem;
+    font-size: 0.82rem;
+    color: var(--ink2);
+    padding: 0.38rem 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  .contact-row:last-of-type { border-bottom: none; }
+  .ci { color: var(--rust-mid); flex-shrink: 0; font-size: 0.85rem; margin-top: 0.1rem; }
+  .contact-row a { color: var(--rust-mid); text-decoration: none; word-break: break-all; }
+  .contact-row a:hover { text-decoration: underline; }
+  .avail-badge {
+    margin-top: 1rem;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.28rem 0.65rem;
+    border-radius: 100px;
+  }
+  .adot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+  /* SECTIONS */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 3rem;
+  }
+  .section + .section { border-top: 1px solid var(--border); }
+  .section-top {
+    display: flex; align-items: baseline; gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  .snum {
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.88rem;
+    color: var(--ink3);
+    font-style: italic;
+  }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+  .section-sub {
+    margin-left: auto;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink3);
+  }
+
+  /* SKILLS */
+  .skills-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.2rem;
+  }
+  .skill-group {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .sg-head {
+    background: var(--bg3);
+    padding: 0.7rem 1.2rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rust-mid);
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+  }
+  .sk-list { list-style: none; padding: 0.4rem 1.2rem 0.8rem; }
+  .sk-list li {
+    font-size: 0.84rem;
+    color: var(--ink2);
+    padding: 0.33rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 0.5rem;
+    line-height: 1.4;
+  }
+  .sk-list li:last-child { border-bottom: none; }
+  .sk-list li::before { content: '—'; color: var(--rust-mid); font-size: 0.7rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+  /* EXPERIENCE */
+  .exp-block {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp-block:last-child { border-bottom: none; }
+  .exp-date { font-size: 0.73rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); margin-bottom: 0.4rem; }
+  .exp-company { font-weight: 500; font-size: 0.88rem; color: var(--rust-mid); margin-bottom: 0.1rem; }
+  .exp-loc { font-size: 0.78rem; color: var(--ink3); }
+  .exp-badge {
+    display: inline-block;
+    margin-top: 0.7rem;
+    background: var(--rust-light);
+    color: var(--rust);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.18rem 0.5rem;
+    border-radius: 2px;
+  }
+  .exp-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .exp-duties { list-style: none; }
+  .exp-duties li {
+    font-size: 0.86rem;
+    color: var(--ink2);
+    padding: 0.28rem 0 0.28rem 1.1rem;
+    position: relative;
+    line-height: 1.6;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp-duties li:last-child { border-bottom: none; }
+  .exp-duties li::before {
+    content: '↗';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 0.68rem;
+    top: 0.44rem;
+  }
+
+  /* PROJECTS */
+  .cat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin: 2.5rem 0 1rem;
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .cat-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .cat-label:first-child { margin-top: 0; }
+  .proj-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .proj-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.6rem;
+    transition: border-color 0.2s, transform 0.15s;
+    display: flex; flex-direction: column;
+  }
+  .proj-card:hover { border-color: var(--rust-mid); transform: translateY(-2px); }
+  .proj-num { font-size: 0.67rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); margin-bottom: 0.45rem; }
+  .proj-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.12rem;
+    margin-bottom: 0.55rem;
+    line-height: 1.25;
+  }
+  .proj-desc { font-size: 0.83rem; color: var(--ink2); line-height: 1.65; margin-bottom: 1rem; flex: 1; }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.85rem; }
+  .tag {
+    font-size: 0.66rem;
+    letter-spacing: 0.07em;
+    background: var(--bg3);
+    color: var(--ink2);
+    padding: 0.16rem 0.48rem;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+  .proj-link {
+    font-size: 0.77rem;
+    color: var(--rust-mid);
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.3rem;
+  }
+  .proj-link:hover { text-decoration: underline; }
+
+  /* EDUCATION */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .edu-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.4rem 1.6rem;
+  }
+  .edu-period { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); margin-bottom: 0.38rem; }
+  .edu-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.02rem;
+    margin-bottom: 0.22rem;
+    line-height: 1.3;
+  }
+  .edu-inst { font-size: 0.8rem; color: var(--rust-mid); font-weight: 500; margin-bottom: 0.55rem; }
+  .edu-desc { font-size: 0.81rem; color: var(--ink2); line-height: 1.6; }
+  .edu-badge {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--gold-light);
+    color: var(--gold);
+    padding: 0.16rem 0.48rem;
+    border-radius: 2px;
+  }
+
+  /* FOOTER */
+  .footer-wrap {
+    background: var(--ink);
+    padding: 4rem 3rem;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+  }
+  .footer-sign {
+    font-family: 'Caveat', cursive;
+    font-size: 2.2rem;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 0.4rem;
+  }
+  .footer-tagline { font-size: 0.8rem; color: rgba(255,255,255,0.35); letter-spacing: 0.04em; }
+  .footer-links { display: flex; flex-direction: column; gap: 0.45rem; align-items: flex-end; }
+  .footer-links a {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: rgba(255,255,255,0.9); }
+
+  /* RESPONSIVE */
+  @media (max-width: 860px) {
+    nav { padding: 0 1.4rem; }
+    .nav-links { gap: 1.1rem; }
+    .hero-wrap { flex-direction: column; padding: 3rem 1.5rem; gap: 2.5rem; min-height: unset; margin-top: 58px; }
+    .hero-right { width: 100%; }
+    .section { padding: 3.5rem 1.5rem; }
+    .skills-cols, .proj-grid, .edu-grid { grid-template-columns: 1fr; }
+    .exp-block { grid-template-columns: 1fr; gap: 0.8rem; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-links { align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-name">Brigitte Iannotta</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <div class="hero-left">
+    <div class="eyebrow"><span class="eyebrow-line"></span>Portfolio &mdash; Nyeri, Kenya</div>
+    <h1>Brigitte<br><em>Iannotta</em><br>Luigia</h1>
+    <div class="hero-roles">
+      <span class="role-pill">Certified Network Engineer</span>
+      <span class="role-pill">Web Developer</span>
+      <span class="role-pill">Creative Designer</span>
+      <span class="role-pill">Admin Professional</span>
+    </div>
+    <p class="hero-summary">A highly organized, detail-oriented professional blending two years of real-world administrative experience with certified technical skills in networking, web development, Python programming, and creative design.</p>
+    <div class="hero-actions">
+      <a href="mailto:brigitteiannotta3@gmail.com" class="btn-primary">Get in touch ↗</a>
+      <a href="https://github.com/Brigitte275" target="_blank" class="btn-secondary">GitHub ↗</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <div class="initials">BI</div>
+        <h3>Brigitte Luigia Iannotta</h3>
+        <p>Nyeri, Kenya</p>
+      </div>
+      <div class="hero-card-body">
+        <div class="contact-row"><span class="ci">✉</span><a href="mailto:brigitteiannotta3@gmail.com">brigitteiannotta3@gmail.com</a></div>
+        <div class="contact-row"><span class="ci">✆</span><span>+254 740 727 751</span></div>
+        <div class="contact-row"><span class="ci">✆</span><span>+254 732 614 692</span></div>
+        <div class="contact-row"><span class="ci">⌥</span><a href="https://github.com/Brigitte275" target="_blank">github.com/Brigitte275</a></div>
+        <div class="contact-row"><span class="ci">◈</span><span>Kenya Scouts Association member</span></div>
+        <div class="avail-badge"><span class="adot"></span>Open to opportunities</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="section-top">
+    <span class="snum">01</span>
+    <h2>Skills &amp; Expertise</h2>
+  </div>
+  <div class="skills-cols">
+    <div class="skill-group">
+      <div class="sg-head">Administrative</div>
+      <ul class="sk-list">
+        <li>Office coordination &amp; operations support</li>
+        <li>Record keeping &amp; document management</li>
+        <li>Professional communication — email, phone, front office</li>
+        <li>Data entry &amp; information organization</li>
+        <li>Scheduling, filing &amp; task coordination</li>
+        <li>Confidentiality &amp; attention to detail</li>
+        <li>Team collaboration &amp; problem-solving</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="sg-head">Technical</div>
+      <ul class="sk-list">
+        <li>Networking — CCNA I, II &amp; III</li>
+        <li>Shell &amp; Linux systems</li>
+        <li>Python programming fundamentals</li>
+        <li>Web design — HTML, CSS, Responsive</li>
+        <li>JavaScript &amp; Node.js basics</li>
+        <li>Git &amp; version control</li>
+        <li>System &amp; connectivity troubleshooting</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="sg-head">Creative &amp; Design</div>
+      <ul class="sk-list">
+        <li>Canva — banners, logos, flyers, posters</li>
+        <li>Creative marketing &amp; campaigns</li>
+        <li>Technical &amp; administrative documentation</li>
+        <li>Presentation design</li>
+        <li>Visual communication</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-top">
+    <span class="snum">02</span>
+    <h2>Work Experience</h2>
+    <span class="section-sub">2 years</span>
+  </div>
+  <div class="exp-block">
+    <div>
+      <p class="exp-date">Mar 2023 – Sep 2025</p>
+      <p class="exp-company">Sam's Real Estate</p>
+      <p class="exp-loc">Nyeri, Kenya</p>
+      <span class="exp-badge">2 years</span>
+    </div>
+    <div>
+      <p class="exp-title">Administrative Support Assistant</p>
+      <ul class="exp-duties">
+        <li>Supported daily office operations to ensure smooth workflow</li>
+        <li>Prepared, organized, and maintained client files, contracts, and records</li>
+        <li>Managed incoming calls, emails, and walk-in inquiries professionally</li>
+        <li>Assisted with scheduling meetings, appointments, and property viewings</li>
+        <li>Performed data entry and maintained organized filing systems</li>
+        <li>Assisted in preparing office documents and reports</li>
+        <li>Maintained confidentiality of company and client information</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="section-top">
+    <span class="snum">03</span>
+    <h2>Projects</h2>
+  </div>
+
+  <p class="cat-label">Tech &amp; Development</p>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <p class="proj-num">Project 01</p>
+      <p class="proj-name">ALX System Engineering &amp; DevOps</p>
+      <p class="proj-desc">A 121-commit repository covering Linux shell basics, file permissions, I/O redirections, and variable expansions — built through the ALX Full-Stack Engineering program.</p>
+      <div class="proj-tags"><span class="tag">Shell</span><span class="tag">Linux</span><span class="tag">Bash</span><span class="tag">DevOps</span></div>
+      <a href="https://github.com/Brigitte275/alx-system_engineering-devops" target="_blank" class="proj-link">github.com/Brigitte275/alx-system_engineering-devops ↗</a>
+    </div>
+    <div class="proj-card">
+      <p class="proj-num">Project 02</p>
+      <p class="proj-name">ALX Pre-Course &amp; Zero Day</p>
+      <p class="proj-desc">Foundation repositories from the ALX Full-Stack Engineering program — Git, version control, and developer environment setup from the ground up.</p>
+      <div class="proj-tags"><span class="tag">Git</span><span class="tag">Linux</span><span class="tag">Shell</span><span class="tag">ALX</span></div>
+      <a href="https://github.com/Brigitte275/alx-pre_course" target="_blank" class="proj-link">github.com/Brigitte275/alx-pre_course ↗</a>
+    </div>
+    <div class="proj-card">
+      <p class="proj-num">Project 03</p>
+      <p class="proj-name">FreeCodeCamp NPM Boilerplate</p>
+      <p class="proj-desc">JavaScript/Node.js boilerplate from the FreeCodeCamp curriculum — npm package management, dependencies, and project configuration.</p>
+      <div class="proj-tags"><span class="tag">JavaScript</span><span class="tag">Node.js</span><span class="tag">NPM</span></div>
+      <a href="https://github.com/Brigitte275/boilerplate-npm" target="_blank" class="proj-link">github.com/Brigitte275/boilerplate-npm ↗</a>
+    </div>
+    <div class="proj-card">
+      <p class="proj-num">Project 04</p>
+      <p class="proj-name">Responsive Web Design Projects</p>
+      <p class="proj-desc">A series of FreeCodeCamp projects: Survey Form, Tribute Page, Technical Documentation Page, and Personal Portfolio Website — all built with HTML &amp; CSS.</p>
+      <div class="proj-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive</span><span class="tag">FreeCodeCamp</span></div>
+    </div>
+  </div>
+
+  <p class="cat-label">Community &amp; Sustainability</p>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <p class="proj-num">Project 05</p>
+      <p class="proj-name">Waste Management &amp; Circular Economy</p>
+      <p class="proj-desc">A 7-month Scout competition project with the Nyeri Scouts Movement focused on circular economy principles — transforming plastic waste into functional products including ecobricks, a vertical garden, upcycled furniture, a plastic stool, bottle shoe rack, eco-house prototype, and a bottle cap curtain.</p>
+      <div class="proj-tags"><span class="tag">Sustainability</span><span class="tag">Circular Economy</span><span class="tag">Upcycling</span><span class="tag">Community</span></div>
+    </div>
+    <div class="proj-card">
+      <p class="proj-num">Project 06</p>
+      <p class="proj-name">African Print Swimwear</p>
+      <p class="proj-desc">A creative fashion side venture curating and promoting African print swimwear collections — celebrating bold Ankara, Kente, and Dashiki patterns through creative marketing and campaigns.</p>
+      <div class="proj-tags"><span class="tag">Fashion</span><span class="tag">African Print</span><span class="tag">Marketing</span><span class="tag">Design</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+  <div class="section-top">
+    <span class="snum">04</span>
+    <h2>Education &amp; Certifications</h2>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <p class="edu-period">Jan – Dec 2024</p>
+      <p class="edu-name">Cisco Certified Network Associate (CCNA I, II &amp; III)</p>
+      <p class="edu-inst">The Nyeri National Polytechnic</p>
+      <p class="edu-desc">Specialized in installing, configuring, managing, and troubleshooting computer networks.</p>
+      <span class="edu-badge">Certification</span>
+    </div>
+    <div class="edu-card">
+      <p class="edu-period">Jan 2020 – Nov 2022</p>
+      <p class="edu-name">Craft Certificate in Information Communication Technology</p>
+      <p class="edu-inst">The Nyeri National Polytechnic</p>
+      <p class="edu-desc">Managing computer systems, networks, and internet services. Promoting innovation through ICT tools and helping organizations use technology efficiently.</p>
+      <span class="edu-badge">Certificate</span>
+    </div>
+    <div class="edu-card">
+      <p class="edu-period">May – Nov 2021</p>
+      <p class="edu-name">PCAP: Programming Essentials in Python</p>
+      <p class="edu-inst">Cisco Networking Academy</p>
+      <p class="edu-desc">Python syntax, variables, loops, functions, object-oriented programming, data processing, and writing and debugging Python programs.</p>
+      <span class="edu-badge">Certification</span>
+    </div>
+    <div class="edu-card">
+      <p class="edu-period">Jan – Mar 2022</p>
+      <p class="edu-name">Responsive Web Design</p>
+      <p class="edu-inst">FreeCodeCamp</p>
+      <p class="edu-desc">Creating websites that automatically adjust and display properly across different devices and screen sizes.</p>
+      <span class="edu-badge">Certification</span>
+    </div>
+    <div class="edu-card">
+      <p class="edu-period">2016 – 2019</p>
+      <p class="edu-name">Kenya Certificate of Secondary Education (KCSE)</p>
+      <p class="edu-inst">Temple Road Secondary School</p>
+      <p class="edu-desc">National secondary education qualification.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER / CONTACT -->
+<footer class="footer-wrap" id="contact">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-sign">Thank You.</div>
+      <p class="footer-tagline">Brigitte Luigia Iannotta &mdash; Nyeri, Kenya &mdash; Open to opportunities</p>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:brigitteiannotta3@gmail.com">brigitteiannotta3@gmail.com</a>
+      <a href="tel:+254740727751">+254 740 727 751</a>
+      <a href="tel:+254732614692">+254 732 614 692</a>
+      <a href="https://github.com/Brigitte275" target="_blank">github.com/Brigitte275 ↗</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
